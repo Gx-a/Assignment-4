@@ -1,55 +1,60 @@
 public abstract class Employee {
     protected String firstName;
     protected String lastName;
-    protected int socialSecurityNumber;
+    protected String socialSecurityNumber;
 
 
-    public Employee( String firstName, String lastName, int socialSecurityNumber,
-                    double weeklySalary, double hourlySalary, double wage, double hours){
+    public Employee( String firstName, String lastName, String socialSecurityNumber){
         this.firstName = firstName;
         this.lastName = lastName;
         this.socialSecurityNumber = socialSecurityNumber;
     }
 
+    //--------------------------------------------------------------------------------------
     public void SetFirstName(String firstName)
     {
         this.firstName = firstName;
     }
-   public String GetfirstName()
+   public String GetFirstName()
    {
         return this.firstName;
     }
-    public void SetlastName(String lastName)
+    //--------------------------------------------------------------------------------------
+    public void SetLastName(String lastName)
     {
         this.lastName = lastName;
     }
-    public String GetlastName() {
+    public String GetLastName() {
         return this.lastName;
     }
-    public void socialSecurityNumber(int socialSecurityNumber) {
+    //--------------------------------------------------------------------------------------
+    public void SetSocialSecurityNumber(String socialSecurityNumber) {
         this.socialSecurityNumber = socialSecurityNumber;
     }
-    public int GetsocialSecurityNumber()
+    public String GetSocialSecurityNumber()
     {
         return this.socialSecurityNumber;
     }
-    public void hours(double hours)
+    //--------------------------------------------------------------------------------------
+    public void SetHours(double hours)
     {
         this.hours = hours;
     }
-    public double Gethours()
+    public double GetHours()
     {
         return this.hours;
     }
+    //--------------------------------------------------------------------------------------
+    public double SalariedEmployee()
+    {
+        return ;
+    }
+    //--------------------------------------------------------------------------------------
 
-        public double SalariedEmployee()
-        {
-            return ;
-        }
-        public double HourlyEmployee()
-        {
-            double hourlySalary = wage * hours;
-          return hourlySalary;
+    public double HourlyEmployee()
+       {
+           double hourlySalary = wage * hours;
+           return hourlySalary;
         }
 
 
