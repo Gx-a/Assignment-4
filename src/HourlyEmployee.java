@@ -8,7 +8,6 @@ public class HourlyEmployee extends Employee {
         super(firstName, lastName, socialSecurityNumber, payable);
         this.wage = wage;
         this.hour = hour;
-
     }
     //--------------------------------------------------------------------------------------
     public  void setWage(double wage)
