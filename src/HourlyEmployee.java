@@ -3,9 +3,9 @@ public class HourlyEmployee extends Employee {
     protected double hour;
 
     public HourlyEmployee( String firstName, String lastName, String socialSecurityNumber,
-                           Payable payable, double wage, double hour)
+                           double wage, double hour)
     {
-        super(firstName, lastName, socialSecurityNumber, payable);
+        super(firstName, lastName, socialSecurityNumber);
         this.wage = wage;
         this.hour = hour;
     }
@@ -26,4 +26,11 @@ public class HourlyEmployee extends Employee {
     {
         return hour;
     }
+
+    public double HourlyEmployee()
+    {
+        double hourlySalary = wage * hour;
+        return hourlySalary;
+    }
+
 }
