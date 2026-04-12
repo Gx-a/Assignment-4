@@ -27,10 +27,11 @@ public class HourlyEmployee extends Employee {
         return hour;
     }
 
-    public double HourlyEmployee()
+
+    public double getPaymentAmount()
     {
-        double hourlySalary = wage * hour;
-        return hourlySalary;
+        double hourlySalary;
+        return hourlySalary = wage * hour;
     }
 
 }

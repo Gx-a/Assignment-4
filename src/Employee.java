@@ -1,4 +1,4 @@
-public abstract class Employee {
+public abstract class Employee implements Payable{
     protected String firstName;
     protected String lastName;
     protected String socialSecurityNumber;
@@ -39,5 +39,11 @@ public abstract class Employee {
 
 
 
+    public double getPaymentAmount(){
+        return 0;
+    }
+
+
+    public void writeToFile(){}
 
 }

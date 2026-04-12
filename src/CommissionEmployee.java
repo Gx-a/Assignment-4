@@ -1,9 +1,10 @@
-public class CommissionEmployee {
+public class CommissionEmployee extends Employee{
     protected  double grossSales;
     protected double commissionRate;
 
-    public CommissionEmployee( double grossSales,  double commissionRate )
+    public CommissionEmployee( String firstName, String lastName, String socialSecurityNumber, double grossSales,  double commissionRate )
     {
+        super(firstName, lastName, socialSecurityNumber);
         this.grossSales = grossSales;
         this.commissionRate = commissionRate;
     }
@@ -23,5 +24,16 @@ public class CommissionEmployee {
     {
         return commissionRate;
     }
+
+
+    @Override
+    public double getPaymentAmount(){
+        return 0;
+    }
+
+    @Override
+    public void writeToFile(){}
+
+
 }
 

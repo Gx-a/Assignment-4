@@ -1,4 +1,4 @@
-public class Invoice extends Payable {
+public class Invoice implements Payable{
     protected String partNumber;
     protected String partDescription;
     protected int quality;
@@ -45,14 +45,15 @@ public class Invoice extends Payable {
     //--------------------------------------------------------------------------------------
 
 
-
+    @Override
+    public double getPaymentAmount() {
+        return pricePerItem;
+    }
 
 
     @Override
     public void writeToFile()
     {
-        System.out.println("Employee  Name : " + firstName + " " + lastName);
-        System.out.println("Employee Social Security Number : " + socialSecurityNumber);
-        System.out.println("Salary : " + );
+
     }
 }
