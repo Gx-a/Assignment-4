@@ -44,6 +44,8 @@ public abstract class Employee implements Payable{
     }
 
 
-    public void writeToFile(){}
+    public void writeToFile(){
+
+    }
 
 }

@@ -1,13 +1,15 @@
+import java.io.*;
+
 public class Invoice implements Payable{
     protected String partNumber;
     protected String partDescription;
-    protected int quality;
+    protected int quantity;
     protected double pricePerItem;
 
     public Invoice(String partNumber, String partDescription, int quality, double pricePerItem) {
     this.partNumber = partNumber;
     this.partDescription = partDescription;
-    this.quality = quality;
+    this.quantity = quality;
     this.pricePerItem = pricePerItem;
     }
 
@@ -29,10 +31,10 @@ public class Invoice implements Payable{
 
     //---------------------------------------------------------------------------------------
     public void setQuality(int quality) {
-        this.quality = quality;
+        this.quantity = quality;
     }
     public int getQuality() {
-        return quality;
+        return quantity;
     }
 
     //--------------------------------------------------------------------------------------
@@ -54,6 +56,13 @@ public class Invoice implements Payable{
     @Override
     public void writeToFile()
     {
+        try(PrintWriter out = new PrintWriter( new FileWriter("Invoice.txt", true))){
+            out.println("PartNumber: " + partNumber + "\n" + "Part Description: " + partDescription + "\n"
+                    + " Quantity: " + quantity + "\n" + "Price: " + pricePerItem);
 
+        }
+        catch(IOException e){
+            System.out.println("Error writing to file");
+        }
     }
 }
