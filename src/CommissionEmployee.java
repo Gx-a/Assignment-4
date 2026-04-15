@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class CommissionEmployee extends Employee{
     protected  double grossSales;
     protected double commissionRate;
@@ -28,11 +32,22 @@ public class CommissionEmployee extends Employee{
 
     @Override
     public double getPaymentAmount(){
+
         return 0;
     }
 
     @Override
-    public void writeToFile(){}
+    public void writeToFile(){
+
+        try(PrintWriter out = new PrintWriter( new FileWriter("Commission Employee Pay Stub.txt", true))){
+            out.println();
+
+        }
+        catch(IOException e){
+            System.out.println("Error writing to file");
+        }
+
+    }
 
 
 }

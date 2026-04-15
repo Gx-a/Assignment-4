@@ -1,3 +1,7 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class HourlyEmployee extends Employee {
     protected double wage;
     protected double hour;
@@ -32,6 +36,19 @@ public class HourlyEmployee extends Employee {
     {
         double hourlySalary;
         return hourlySalary = wage * hour;
+    }
+
+    @Override
+    public void writeToFile(){
+
+        try(PrintWriter out = new PrintWriter( new FileWriter("HourLy Employee Pay Stub.txt", true))){
+            out.println();
+
+        }
+        catch(IOException e){
+            System.out.println("Error writing to file");
+        }
+
     }
 
 }
