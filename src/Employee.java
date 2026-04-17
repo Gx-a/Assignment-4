@@ -1,4 +1,6 @@
-public abstract class Employee implements Payable{
+import java.io.Serializable;
+
+public abstract class Employee implements Payable, Serializable {
     protected String firstName;
     protected String lastName;
     protected String socialSecurityNumber;
@@ -48,4 +50,7 @@ public abstract class Employee implements Payable{
 
     }
 
+    public String getFullName() {
+        return "";
+    }
 }

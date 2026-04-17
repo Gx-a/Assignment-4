@@ -12,7 +12,10 @@ public class SalariedEmployee extends Employee {
     }
     //--------------------------------------------------------------------------------------
 
-    public void setWeeklySalary(double weeklySalary) {
+    public void setWeeklySalary(double weeklySalary) throws InvalidSalaryException {
+        if (weeklySalary <= 0) {
+            throw new InvalidSalaryException("Weekly salary cannot be negative!");
+        }
         this.weeklySalary = weeklySalary;
     }
     public double getWeeklySalary()
@@ -40,5 +43,10 @@ public class SalariedEmployee extends Employee {
             System.out.println("Error writing to file");
         }
 
+    }
+
+    private class InvalidSalaryException extends Throwable {
+        public InvalidSalaryException(String s) {
+        }
     }
 }

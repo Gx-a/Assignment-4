@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Invoice implements Payable{
+public class Invoice implements Payable, Serializable{
     protected String partNumber;
     protected String partDescription;
     protected int quantity;
