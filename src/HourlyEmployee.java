@@ -35,14 +35,7 @@ public class HourlyEmployee extends Employee {
     //--------------------------------------------------------------------------------------
     public void setOvertimeHours(double overtimeHours)
     {
-        if(hour > 40)
-        {
-            this.overtimeHours = hour - 40;
-        }
-        else
-        {
-            this.overtimeHours = 0;
-        }
+       this.overtimeHours = (hour > 40)? this.overtimeHours - 40: 0;
     }
     public double getOvertimeHours()
     {
