@@ -49,7 +49,7 @@ public class Invoice implements Payable, Serializable{
 
     @Override
     public double getPaymentAmount() {
-        return pricePerItem;
+        return pricePerItem * quantity;
     }
 
 
@@ -58,7 +58,8 @@ public class Invoice implements Payable, Serializable{
     {
         try(PrintWriter out = new PrintWriter( new FileWriter("Invoice.txt", true))){
             out.println("PartNumber: " + partNumber + "\n" + "Part Description: " + partDescription + "\n"
-                    + " Quantity: " + quantity + "\n" + "Price: " + pricePerItem);
+                    + " Quantity: " + quantity + "\n" + "Price: " + pricePerItem + "\n" +
+                    "Total: " + getPaymentAmount() + "\n" + "-----------------------------");
 
         }
         catch(IOException e){

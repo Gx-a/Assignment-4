@@ -17,7 +17,7 @@ public class CommissionEmployee extends Employee{
         this.grossSales = grossSales;
     }
     public double getGrossSales() {
-        return grossSales;
+        return this.grossSales;
     }
     //--------------------------------------------------------------------------------------
     public void setCommissionRate(double commissionRate)
@@ -26,21 +26,25 @@ public class CommissionEmployee extends Employee{
     }
     public double getCommissionRate()
     {
-        return commissionRate;
+        return this.commissionRate;
     }
 
 
     @Override
     public double getPaymentAmount(){
 
-        return 0;
+        return grossSales * commissionRate;
     }
 
     @Override
     public void writeToFile(){
 
         try(PrintWriter out = new PrintWriter( new FileWriter("Commission Employee Pay Stub.txt", true))){
-            out.println();
+            out.println("Employee Name: " + firstName + " " + lastName + "\n" +
+                    "Social Security Number: " + socialSecurityNumber + "\n" +
+                    " Gross Sales: $" + grossSales + "\n" +
+                    " Commission Rate: " + commissionRate + "%"+"\n" +
+                    " Payment Amount: $" + getPaymentAmount());
 
         }
         catch(IOException e){

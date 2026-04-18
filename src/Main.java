@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         /* Create objects */
-        SalariedEmployee emp1 = new SalariedEmployee(800,"John", "Wick", "123");
+        SalariedEmployee emp1 = new SalariedEmployee( "John", "Wick", "123", 8);
         HourlyEmployee emp2 = new HourlyEmployee("Will", "Smith", "456", 20, 45);
         CommissionEmployee emp3 = new CommissionEmployee("Mark", "Golding", "789", 10000, 0.1);
         BasePlusCommissionEmployee emp4 = new BasePlusCommissionEmployee(100000,"Lisa","Hanna", "321", 50000, 0.05);

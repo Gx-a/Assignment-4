@@ -46,9 +46,7 @@ public abstract class Employee implements Payable, Serializable {
     }
 
 
-    public void writeToFile(){
-
-    }
+    public void writeToFile(){}
 
     public String getFullName() {
         return "";

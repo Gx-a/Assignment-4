@@ -4,30 +4,38 @@ import java.io.PrintWriter;
 
 public class SalariedEmployee extends Employee {
     protected double weeklySalary;
+    protected double weeksWorked;
 
-    public SalariedEmployee(double weeklySalary, String firstName, String lastName, String socialSecurityNumber){
+    public SalariedEmployee(String firstName, String lastName, String socialSecurityNumber, double weeksWorked){
 
         super(firstName, lastName, socialSecurityNumber);
-        this.weeklySalary = weeklySalary;
+        this.weeklySalary = 0;
+        this.weeksWorked = weeksWorked;
     }
     //--------------------------------------------------------------------------------------
 
-    public void setWeeklySalary(double weeklySalary) throws InvalidSalaryException {
-        if (weeklySalary <= 0) {
-            throw new InvalidSalaryException("Weekly salary cannot be negative!");
-        }
-        this.weeklySalary = weeklySalary;
+    public void setWeeklySalary(double weeklySalary){
+        this.weeklySalary = 40000;
     }
     public double getWeeklySalary()
     {
         return this.weeklySalary;
+    }
+    public void setWeeksWorked(double weeksWorked) throws InvalidSalaryException {
+        if (weeksWorked <= 0) {
+            throw new InvalidSalaryException("Weeks worked cannot be negative!");
+        }
+        this.weeksWorked = weeksWorked;
+    }
+    public double getWeeksWorked(){
+        return weeksWorked;
     }
     //--------------------------------------------------------------------------------------
 
 
     public double getPaymentAmount()
     {
-        return weeklySalary;
+        return weeklySalary * weeksWorked;
     }
 
 
@@ -36,7 +44,11 @@ public class SalariedEmployee extends Employee {
     public void writeToFile(){
 
         try(PrintWriter out = new PrintWriter( new FileWriter("Salaried Employee Pay Stub.txt", true))){
-            out.println();
+            out.println("Employee Name: " + firstName + " " + lastName + "\n" +
+                    "Social Security Number: " + socialSecurityNumber + "\n" +
+                    " Weekly Salary: $" + weeklySalary + "\n" +
+                    " Weeks Worked: " + weeksWorked +
+                    " Payment Amount: $" + getPaymentAmount());
 
         }
         catch(IOException e){
