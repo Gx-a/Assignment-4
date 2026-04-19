@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -22,6 +23,33 @@ public class Main {
         // Display payments
         for (Payable p : list) {
             System.out.println("Payment: " + p.getPaymentAmount());
+        }
+
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(
+                    new FileOutputStream("payroll_data.dat")
+            );
+            out.writeObject(list);
+            out.close();
+            System.out.println("Data saved!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ObjectInputStream in = new ObjectInputStream(
+                    new FileInputStream("payroll_data.dat")
+            );
+            ArrayList<Payable> loadedList = (ArrayList<Payable>) in.readObject();
+            in.close();
+
+            System.out.println("Loaded Data:");
+            for (Payable p : loadedList) {
+                System.out.println("Payment: " + p.getPaymentAmount());
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
