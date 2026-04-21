@@ -76,7 +76,7 @@ public class PayrollGUI extends JFrame {
         try {
             // Dropdown box for the type of salaried employee
             JComboBox<String> typeBox = new JComboBox<>(
-                    new String[]{"Salaried", "Hourly"}
+                    new String[]{"Salaried", "Hourly", "Commissioned", "Base Commissioned"}
             );
 
             int option = JOptionPane.showConfirmDialog(
@@ -92,17 +92,19 @@ public class PayrollGUI extends JFrame {
 
             String firstName = JOptionPane.showInputDialog("First Name: ");
             String lastName = JOptionPane.showInputDialog("Last Name: ");
+            String SocialSecurityNumber = JOptionPane.showInputDialog("Social Security Number: ");
 
+//          Salaried Employee
             if (type.equalsIgnoreCase("Salaried")) {
 
-                double salary = Double.parseDouble(
-                        JOptionPane.showInputDialog("Salary: ")
+                double WeeksWorked = Double.parseDouble(
+                        JOptionPane.showInputDialog("Weeks worked: ")
                 );
 
-                if (salary < 0)
-                    throw new InvalidSalaryException("Salary cannot be negative!");
+                if (WeeksWorked < 0)
+                    throw new InvalidSalaryException("work weeks cannot be negative!");
 
-                Payable emp = new SalariedEmployee(firstName, lastName, "N/A", salary);
+                Payable emp = new SalariedEmployee(firstName, lastName, SocialSecurityNumber, WeeksWorked);
 
                 payrollList.add(emp);
 
@@ -110,6 +112,7 @@ public class PayrollGUI extends JFrame {
                         "Salaried", firstName, lastName, emp.getPaymentAmount()
                 });
 
+//          Hourly Employee
             } else if (type.equalsIgnoreCase("Hourly")) {
 
                 double wage = Double.parseDouble(
@@ -129,6 +132,52 @@ public class PayrollGUI extends JFrame {
                 model.addRow(new Object[]{
                         "Hourly", firstName, lastName, emp.getPaymentAmount()
                 });
+
+//          Commissioned Employee
+            } else if (type.equalsIgnoreCase("Commissioned")) {
+
+                double grossSales = Double.parseDouble(JOptionPane.showInputDialog("Gross Salers: $"));
+                JComboBox<String> CRTypeBox = new JComboBox<>(new String[]{"0.1","0.2","0.3"});
+
+                int choice = JOptionPane.showConfirmDialog(
+                        null,
+                        CRTypeBox,
+                        "Select Commission Rate",
+                        JOptionPane.OK_CANCEL_OPTION
+                );
+
+                double commissionRate = Double.parseDouble((String) CRTypeBox.getSelectedItem());
+
+
+                if(grossSales < 0){
+                    throw new InvalidSalaryException("Invalid values!");}
+
+                Payable emp = new CommissionEmployee(firstName, lastName, SocialSecurityNumber, grossSales, commissionRate);
+
+                payrollList.add(emp);
+                model.addRow(new Object[]{"Commissioned", firstName, lastName, emp.getPaymentAmount()});
+
+//          Base Commissioned Employee
+            } else  if (type.equalsIgnoreCase("Base Commissioned")) {
+                double grossSales = Double.parseDouble(JOptionPane.showInputDialog("Gross Salers: $"));
+                JComboBox<String> CRTypeBox = new JComboBox<>(new String[]{"0.1","0.2","0.3"});
+
+                int choice = JOptionPane.showConfirmDialog(
+                        null,
+                        CRTypeBox,
+                        "Select Commission Rate",
+                        JOptionPane.OK_CANCEL_OPTION
+                );
+
+                double commissionRate = Double.parseDouble((String) CRTypeBox.getSelectedItem());
+
+                if(grossSales < 0){
+                    throw new InvalidSalaryException("Invalid values!");}
+
+                Payable emp = new BasePlusCommissionEmployee(firstName, lastName, SocialSecurityNumber, grossSales, commissionRate);
+                payrollList.add(emp);
+                model.addRow(new Object[]{"Base Commissioned", firstName, lastName, emp.getPaymentAmount()});
+
             }
 
         } catch (NumberFormatException e) {

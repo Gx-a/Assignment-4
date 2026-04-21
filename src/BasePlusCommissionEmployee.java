@@ -5,11 +5,11 @@ import java.io.PrintWriter;
 public class BasePlusCommissionEmployee extends CommissionEmployee{
     protected double baseSalary;
 
-    public BasePlusCommissionEmployee( double baseSalary, String firstName, String lastName, String socialSecurityNumber, double grossSales,  double commissionRate )
+    public BasePlusCommissionEmployee( String firstName, String lastName, String socialSecurityNumber, double grossSales,  double commissionRate )
     {
         super(firstName, lastName, socialSecurityNumber, grossSales, commissionRate);
 
-        this.baseSalary = baseSalary;
+        this.baseSalary = 80000.00;
     }
 
     //--------------------------------------------------------------------------------------
@@ -35,9 +35,9 @@ public class BasePlusCommissionEmployee extends CommissionEmployee{
             out.println("Employee Name: " + firstName + " " + lastName + "\n" +
                     "Social Security Number: " + socialSecurityNumber + "\n" +
                     "Base Salary: " + baseSalary + "\n" +
-                    " Gross Sales: " + grossSales + "\n" +
-                    " Commission Rate: " + commissionRate + "\n" +
-                    " Payment Amount: " + getPaymentAmount());
+                    "Gross Sales: " + grossSales + "\n" +
+                    "Commission Rate: " + commissionRate + "\n" +
+                    "Payment Amount: " + getPaymentAmount() + "\n");
 
         }
         catch(IOException e){

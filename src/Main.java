@@ -8,7 +8,7 @@ public class Main {
         SalariedEmployee emp1 = new SalariedEmployee( "John", "Wick", "123", 8);
         HourlyEmployee emp2 = new HourlyEmployee("Will", "Smith", "456", 20, 45);
         CommissionEmployee emp3 = new CommissionEmployee("Mark", "Golding", "789", 10000, 0.1);
-        BasePlusCommissionEmployee emp4 = new BasePlusCommissionEmployee(100000,"Lisa","Hanna", "321", 50000, 0.05);
+        BasePlusCommissionEmployee emp4 = new BasePlusCommissionEmployee("Lisa","Hanna", "321", 50000, 0.05);
 
         Invoice inv1 = new Invoice("A101", "P001", 100, 120);
 

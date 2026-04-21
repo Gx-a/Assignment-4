@@ -13,7 +13,7 @@ public class HourlyEmployee extends Employee {
         super(firstName, lastName, socialSecurityNumber);
         this.wage = wage;
         this.hour = hour;
-        this.overtimeHours = 0;
+        this.overtimeHours = (hour > 40)? hour - 40: 0;;
     }
     //--------------------------------------------------------------------------------------
     public  void setWage(double wage)
@@ -33,10 +33,10 @@ public class HourlyEmployee extends Employee {
         return hour;
     }
     //--------------------------------------------------------------------------------------
-    public void setOvertimeHours(double overtimeHours)
+    /*public void setOvertimeHours(double overtimeHours)
     {
        this.overtimeHours = (hour > 40)? hour - 40: 0;
-    }
+    }*/
     public double getOvertimeHours()
     {
         return this.overtimeHours;
@@ -45,8 +45,8 @@ public class HourlyEmployee extends Employee {
 
     public double getPaymentAmount()
     {
-        if(overtimeHours > 0){
-            return (wage * hour) + ((wage * 1.5) * overtimeHours);
+        if(this.overtimeHours > 0){
+            return (wage * hour) + ((wage * 1.5) * this.overtimeHours);
         }
         else{
             return wage * hour;
@@ -60,10 +60,10 @@ public class HourlyEmployee extends Employee {
         try(PrintWriter out = new PrintWriter( new FileWriter("HourLy Employee Pay Stub.txt", true))){
             out.println("Employee Name: " + firstName + " " + lastName + "\n" +
                     "Social Security Number: " + socialSecurityNumber + "\n" +
-                    " Wage: $" + wage + "\n" +
-                    " Hours Worked: " + hour  +
+                    "Wage: $" + wage + "\n" +
+                    "Hours Worked: " + hour  + "\n" +
                     "Overtime Hours: " + overtimeHours + "\n" +
-                    " Payment Amount: $" + getPaymentAmount());
+                    "Payment Amount: $" + getPaymentAmount() + "\n");
 
         }
         catch(IOException e){

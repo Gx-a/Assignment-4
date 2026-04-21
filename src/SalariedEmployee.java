@@ -9,14 +9,14 @@ public class SalariedEmployee extends Employee {
     public SalariedEmployee(String firstName, String lastName, String socialSecurityNumber, double weeksWorked){
 
         super(firstName, lastName, socialSecurityNumber);
-        this.weeklySalary = 0;
+        this.weeklySalary = 40000.00;
         this.weeksWorked = weeksWorked;
     }
     //--------------------------------------------------------------------------------------
 
-    public void setWeeklySalary(double weeklySalary){
+    /*public void setWeeklySalary(double weeklySalary){
         this.weeklySalary = 40000;
-    }
+    }*/
     public double getWeeklySalary()
     {
         return this.weeklySalary;
@@ -46,9 +46,9 @@ public class SalariedEmployee extends Employee {
         try(PrintWriter out = new PrintWriter( new FileWriter("Salaried Employee Pay Stub.txt", true))){
             out.println("Employee Name: " + firstName + " " + lastName + "\n" +
                     "Social Security Number: " + socialSecurityNumber + "\n" +
-                    " Weekly Salary: $" + weeklySalary + "\n" +
-                    " Weeks Worked: " + weeksWorked +
-                    " Payment Amount: $" + getPaymentAmount());
+                    "Weekly Salary: $" + weeklySalary + "\n" +
+                    "Weeks Worked: " + weeksWorked + "\n" +
+                    "Payment Amount: $" + getPaymentAmount() + "\n");
 
         }
         catch(IOException e){

@@ -58,8 +58,8 @@ public class Invoice implements Payable, Serializable{
     {
         try(PrintWriter out = new PrintWriter( new FileWriter("Invoice.txt", true))){
             out.println("PartNumber: " + partNumber + "\n" + "Part Description: " + partDescription + "\n"
-                    + " Quantity: " + quantity + "\n" + "Price: " + pricePerItem + "\n" +
-                    "Total: " + getPaymentAmount() + "\n" + "-----------------------------");
+                    + "Quantity: " + quantity + "\n" + "Price: " + pricePerItem + "\n" +
+                    "Total: " + getPaymentAmount() + "\n" + "-----------------------------" + "\n");
 
         }
         catch(IOException e){

@@ -42,9 +42,9 @@ public class CommissionEmployee extends Employee{
         try(PrintWriter out = new PrintWriter( new FileWriter("Commission Employee Pay Stub.txt", true))){
             out.println("Employee Name: " + firstName + " " + lastName + "\n" +
                     "Social Security Number: " + socialSecurityNumber + "\n" +
-                    " Gross Sales: $" + grossSales + "\n" +
-                    " Commission Rate: " + commissionRate + "%"+"\n" +
-                    " Payment Amount: $" + getPaymentAmount());
+                    "Gross Sales: $" + grossSales + "\n" +
+                    "Commission Rate: " + commissionRate + "%"+"\n" +
+                    "Payment Amount: $" + getPaymentAmount() + "\n");
 
         }
         catch(IOException e){
